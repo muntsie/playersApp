@@ -1,0 +1,296 @@
+<!-- code content section
+doctype
+meta
+link
+script
+playersApp div that contains the angular module & controller info
+ng-model for query and sort order
+title of app
+data binding
+footer
+-->
+
+<!doctype html>
+
+    <title>Player's App</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script data-require="angular.js@*" data-semver="1.4.0-beta.5" src="https://code.angularjs.org/1.4.0-beta.5/angular.js"></script>
+    <script src="controllers.js"></script>
+
+<header>WX Girl's Lacrosse<br />
+Player's App</header>
+<br />
+
+<div id="playersApp" ng-app="playersApp" ng-controller="PlayersController">
+
+Search: <input ng-model="query">
+Sort by:
+<select ng-model="orderProp">
+  <option value="player">Alphabetical</option>
+  <option value="num">Number</option>
+</select><br />
+
+<ul>
+  <li ng-repeat="player in players | filter:query | orderBy:orderProp">
+    <strong class="spacing">#{{player.num}}&nbsp;{{player.player}}</strong><br />
+
+  </li>
+</ul>
+</div>
+
+<br /><br />
+<footer>&copy;&nbsp;<a href="http://www.huntsmanconsulting.com">Huntsman Consulting,</a> All rights reserved</footer>
+
+<!-- controllers -->
+
+var playersApp = angular.module('playersApp', []);
+
+playersApp.controller('PlayersController', function ($scope, $http) {
+  $http.get('players.json').success(function(data) {
+    $scope.players = data;
+  });
+
+  $scope.orderProp = 'sort';
+});
+
+<!-- css -->
+html{
+  margin:0 auto;
+  text-align:center;
+  background:#000000;
+  color:#ffffff;
+}
+header{
+  font-style: italic;
+  font-weight:bold;
+  font-size: 150%;
+  text-align:center;
+}
+ul{
+  list-style-type: none;
+}
+.spacing{
+  line-height: 130%;
+}
+footer{
+  font-style: italic;
+  font-weight:bold;
+  font-size: 80%;
+  text-align:center;
+}
+/* unvisited link */
+a:link {
+    color: #a10101;
+    text-decoration:none;
+}
+
+/* visited link */
+a:visited {
+    color: #a10101;
+    text-decoration:none;
+}
+
+/* mouse over link */
+a:hover {
+    color: #ffffff;
+    text-decoration:none;    
+}
+
+/* selected link */
+a:active {
+    color: #a10101;
+    text-decoration:none;    
+}
+
+<!-- README.md -->
+an angularjs app for parents to quickly identify a player's first name using the number on a player's jersey.
+
+<!-- json -->
+[
+    {
+        "sort": 1,
+        "num": "1",
+        "player": "Jessica"
+    },
+    {
+        "sort": 2,
+        "num": "2",
+        "player": "Gabby"
+    },
+    {
+        "sort": 3,
+        "num": "3",
+        "player": "Heather"
+    },
+    {
+        "sort": 4,
+        "num": "4",
+        "player": "Gracie"
+    },
+    {
+        "sort": 5,
+        "num": "5",
+        "player": "Lexi"
+    },
+    {
+        "sort": 6,
+        "num": "6",
+        "player": "Claire-Elise"
+    },
+    {
+        "sort": 7,
+        "num": "7",
+        "player": "Megan"
+    },
+    {
+        "sort": 8,
+        "num": "8",
+        "player": "Miranda"
+    },
+    {
+        "sort": 10,
+        "num": "10",
+        "player": "Holly"
+    },
+    {
+        "sort": 11,
+        "num": "11",
+        "player": "Kenzie"
+    },
+    {
+        "sort": 12,
+        "num": "12",
+        "player": "Gabbi"
+    },
+    {
+        "sort": 13,
+        "num": "13",
+        "player": "JJ"
+    },
+    {
+        "sort": 14,
+        "num": "14",
+        "player": "Emma"
+    },
+    {
+        "sort": 15,
+        "num": "15",
+        "player": "Alysha"
+    },
+    {
+        "sort": 16,
+        "num": "16",
+        "player": "Tori"
+    },
+    {
+        "sort": 17,
+        "num": "17",
+        "player": "Emma"
+    },
+    {
+        "sort": 18,
+        "num": "18",
+        "player": "Sarah"
+    },
+    {
+        "sort": 19,
+        "num": "19",
+        "player": "Hannah"
+    },
+    {
+        "sort": 20,
+        "num": "20",
+        "player": "Gill"
+    },
+    {
+        "sort": 21,
+        "num": "21",
+        "player": "Daisy"
+    },
+    {
+        "sort": 22,
+        "num": "22",
+        "player": "Keziah"
+    },
+    {
+        "sort": 23,
+        "num": "23",
+        "player": "Vanessa"
+    },
+    {
+        "sort": 24,
+        "num": "24",
+        "player": "Kiana"
+    },
+    {
+        "sort": 25,
+        "num": "25",
+        "player": "Sariah"
+    },
+    {
+        "sort": 26,
+        "num": "26",
+        "player": "Jayda"
+    },
+    {
+        "sort": 27,
+        "num": "27",
+        "player": "Bailey"
+    },
+    {
+        "sort": 28,
+        "num": "28",
+        "player": "Keriel"
+    },
+    {
+        "sort": 29,
+        "num": "29",
+        "player": "Summer"
+    },
+    {
+        "sort": 30,
+        "num": "30",
+        "player": "Nikki"
+    },
+    {
+        "sort": 31,
+        "num": "31",
+        "player": "Rachel"
+    },
+    {
+        "sort": 32,
+        "num": "32",
+        "player": "Savannah"
+    },
+    {
+        "sort": 33,
+        "num": "33",
+        "player": "Catherine"
+    },
+    {
+        "sort": 34,
+        "num": "34 40",
+        "player": "Daisy"
+    },
+    {
+        "sort": 35,
+        "num": "35",
+        "player": "Haylee"
+    },
+    {
+        "sort": 55,
+        "num": "55",
+        "player": "Tiffany"
+    },
+    {
+        "sort": 0,
+        "num": "0",
+        "player": "Toa"
+    },
+    {
+        "sort": 99,
+        "num": "99",
+        "player": "Faith"
+    }
+]
